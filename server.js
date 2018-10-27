@@ -15,14 +15,6 @@ app.use(helmet());
 app.use(helmet.noCache());
 app.use(helmet.hidePoweredBy({ setTo: 'PHP 4.2.0' }));
 
-app.use((req, res, next) => {
-    let meth = req.method;
-    let path = req.path;
-    let ip = req.ip;
-    console.log(`${meth} ${path} - ${ip}`);
-    next();
-});
-
 app.use('/public', express.static(process.cwd() + '/public'));
 
 app.use(cors({ origin: '*' })); //USED FOR FCC TESTING PURPOSES ONLY!
